@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cronometro.css">
+    <title>Cronometro</title>
+</head>
+<body>
+    <main class="contenedor__principal">
+
+        <div class="contenedor__interno">
+          <div id="cronometro">00:00:00</div>
+
+          <div class="contenedor__botones">
+              <button id="inicio__pausa" class="boton iniciar">
+                <iconify-icon icon="mdi:play"></iconify-icon>
+              </button>
+
+              <button id="reiniciar" class="boton">
+                <iconify-icon icon="mdi:reload"></iconify-icon>
+              </button>
+          </div>
+
+        </div>
+
+    </main>
+
+    <script>
+const cronometro = document.getElementById('cronometro');
+const boton = document.getElementById('inicio__pausa');
+const botonReiniciar = document.getElementById('reiniciar');
+
+let [horas,minutos,segundos] = [0,0,0];
+
+let intervaloDeTiempo;
+let estadoCronometro = 'pausado';
+
+function actualizarCronometro(){
+  segundos++;
+
+  if(segundos /60 === 1){
+    segundos = 0;
+    minutos++;
+
+    if(minutos /60 === 1){
+      minutos = 0;
+      horas++;
+    }
+  }
+
+  const segundosConFormato = asignarFormato(segundos);
+  const minutosConFormato = asignarFormato(minutos);
+  const horasConFormato = asignarFormato(horas);  
+
+  cronometro.innerText = `${horasConFormato}:${minutosConFormato}:${segundosConFormato}`;
+
+}
+
+function asignarFormato(unidadDeTiempo){
+  return unidadDeTiempo < 10 ? '0' + unidadDeTiempo : unidadDeTiempo;
+}
+
+boton.addEventListener('click', function(){
+  if(estadoCronometro === 'pausado'){
+    intervaloDeTiempo = window.setInterval(actualizarCronometro, 1000);
+    boton.innerHTML = '<iconify-icon icon="material-symbols:pause"></iconify-icon>';
+    boton.classList.remove('iniciar');
+    boton.classList.add('pausar');
+    estadoCronometro = 'en marcha!';
+  }else{
+    window.clearInterval(intervaloDeTiempo);
+    boton.innerHTML ='<iconify-icon icon="mdi:play"></iconify-icon>';
+    boton.classList.remove('pausar');
+    boton.classList.add('iniciar');
+    estadoCronometro = 'pausado';
+  }
+})
+
+botonReiniciar.addEventListener('click', function(){
+  window.clearInterval(intervaloDeTiempo);
+
+  horas = 0;
+  minutos = 0;
+  segundos = 0;
+
+  // actualizar botones
+
+  cronometro.innerText = '00:00:00';
+
+  boton.innerHTML = '<iconify-icon icon="mdi:play"></iconify-icon>';
+  boton.classList.remove('pausar');
+  boton.classList.add('iniciar');
+
+  estadoCronometro = 'pausado';
+})
+    </script>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+</body>
+</html>

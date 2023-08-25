@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,600;1,200;1,300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+/* Barra de Navegacion */
+
+.navbar{
+    padding: 2rem;
+}
+
+.navbar-collapse{
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(246, 172, 13);
+    width: 100%;
+}
+
+.navbar-brand iconify-icon{
+    font-size: 2.2rem;
+}
+
+
+@media screen and (max-width:767px){
+    .navbar-brand iconify-icon{
+        display: none;
+    }
+}
+
+/* SECCION HERO */
+
+/* seccion general */
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img__hero__profile{
+    outline: 6px solid rgb(0, 0, 0);
+    width: 120px;
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+h1{
+    font-size: 2.8rem;
+    margin: 1.5rem;
+}
+
+h2{
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.hero{
+    background-color: #f5f6f7;
+    min-height: 450px;
+    text-align: center;
+}

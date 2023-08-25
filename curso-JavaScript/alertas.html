@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="alert.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="ingreso" class="ingreso">
+        Ingresar
+    </button>
+
+    <div id="text">
+
+    </div>
+
+    <script>
+        let botonIngreso = document.getElementById('ingreso');
+        let TextoFinal = document.getElementById('text');
+        let NewText = document.createElement('p');
+
+        // funcion para crear funcion click y texto
+
+        botonIngreso.addEventListener('click', function(){
+            let accesoPermitido =  confirm('1- BIENVENIDO 2- NO PUEDES ENTRAR');
+            NewText.innerText = 'BIENVENIDO';
+
+            // condicional para validar una info o la otra
+
+            if(accesoPermitido){
+                NewText.style.color = 'green'
+                 TextoFinal.append(NewText);
+
+            }else{
+                NewText.style.color = 'red'
+                NewText.innerText = 'NO PUEDES ENTRAR';
+            }
+        })
+
+        // const saludo = () => {
+        //     alert('the time work correctly!');
+        // }
+
+
+        // setTimeout(saludo,2000);
+    </script>
+    
+</body>
+</html>

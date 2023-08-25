@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylo.css">
+    <link rel="stylesheet" href="rgba.css">
+    <title>Colores RGBA con JavaScript</title>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <h2 class="title" id="color">#2B807B</h2>
+
+          <button id="boton__color" class="cta">
+            <iconify-icon icon="ic:round-change-circle"></iconify-icon>
+           </button>
+
+            <li class="names blue">Hecho con HTML 1</li>
+            <li class="names red">Hecho con HTML 2</li>
+            <li class="names Purple">Hecho con HTML 3</li>
+            <li class="names yellow">Hecho con HTML 4</li>
+            <li class="names Black">Hecho con HTML 5</li>
+    </nav>
+
+
+<!-- LISTA HECHA CON JS -->
+<script>
+let listaNombres = document.getElementById('nav');
+let NewName = document.createElement('li');
+let MadeHtml = document.querySelector('.yellow');
+
+console.log(listaNombres);
+
+// creacion del elemento, agregando clases y stilos
+NewName.classList.add('names','red');
+NewName.innerText=('hecho con JavaScript');
+
+// append : para agregar nuevo nombre a la lista
+listaNombres.append(NewName);
+
+// para remover elementos
+// NewName.remove(NewName);
+
+// CICLO PARA ITERAR SOBRE TODOS LOS ELEMENTOS DE UNA LISTA
+
+// let IterList = document.getElementsByClassName('names');
+
+// for(const nab of IterList){
+//   nab.addEventListener('click', (e)=>{
+//     console.log(e.target.innerText)
+//     nab.classList.toggle('texto__grande');
+//   })
+// }
+</script>
+
+<!-- RGBA JS -->
+<script>
+let boton = document.getElementById('boton__color');
+let color = document.getElementById('color');
+
+function genexColor(){
+    let digitos = '0123456789ABCDEF';
+    let colorHex = '#'
+
+    for(let i = 0; i < 6; i++){
+        let Aleat = Math.floor(Math.random()* 16);
+        colorHex += digitos[Aleat]; 
+    }
+
+    return colorHex;
+
+}
+
+boton.addEventListener('click', function(){
+    let colorAleatory = genexColor();
+    // ACTUALIZAR EL TEXTO
+    color.textContent = colorAleatory;
+// ACTUALLIZAR EL COLOR DE FONDO
+    let fondoColor = document.getElementById('nav')
+    fondoColor.style.backgroundColor = colorAleatory;
+})
+</script>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+</html>

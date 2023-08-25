@@ -1,0 +1,56 @@
+
+
+body{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    text-align: center;
+}
+
+.contenedor__principal{
+    width: 80%;
+    min-height: 350px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(0, 0, 0);
+}
+
+#cronometro{
+    font-size: 3rem;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    user-select: none;
+}
+
+.contenedor__botones{
+    margin-top: 2rem;
+    background-color: black;
+    padding: 1rem 1.8rem;
+    justify-content: space-between;
+    display: flex;
+}
+
+.boton{
+    border: none;
+    background-color: #fff;
+}
+
+.boton:hover{
+    scale: 1.1;
+    background-color: rgb(72, 246, 130);
+}
+
+#reiniciar,
+#inicio__pausa{
+    font-size: 2.5rem;
+    line-height: 0.7;
+    transition: scale .4s;
+    cursor: pointer;
+}
